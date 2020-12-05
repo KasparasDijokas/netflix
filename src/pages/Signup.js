@@ -22,8 +22,8 @@ const Signup = () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        result.name
+      .then((userData) => {
+        userData.user
           .updateProfile({
             displayName: firstName,
             photoURL: Math.floor(Math.random() * 5) + 1,
@@ -31,7 +31,7 @@ const Signup = () => {
           .then(() => {
             history.push(ROUTES.BROWSE);
           });
-        console.log(result);
+        
       })
       .catch((error) => {
         setFirstName("");
